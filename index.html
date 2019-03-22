@@ -63,6 +63,8 @@
     <link rel="stylesheet" href="assets/fonts/material-icons.css">
     
     
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
     
       
     
@@ -83,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#welcome-to-mkdocs" tabindex="1" class="md-skip">
+      <a href="#welcome-to-openkuka" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -168,8 +170,6 @@
 
       
         
-      
-        
   
   
     <li class="md-tabs__item">
@@ -238,15 +238,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
-    Commands
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" title="Project layout" class="md-nav__link">
-    Project layout
+  <a href="#collaborate" title="Collaborate" class="md-nav__link">
+    Collaborate
   </a>
   
 </li>
@@ -267,27 +267,15 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="crosscomm/" title="CrossComm" class="md-nav__link">
-      CrossComm
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
-    <label class="md-nav__link" for="nav-3">
+    <label class="md-nav__link" for="nav-2">
       Language Reference
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+      <label class="md-nav__title" for="nav-2">
         Language Reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -343,15 +331,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
-    Commands
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" title="Project layout" class="md-nav__link">
-    Project layout
+  <a href="#collaborate" title="Collaborate" class="md-nav__link">
+    Collaborate
   </a>
   
 </li>
@@ -373,25 +361,23 @@
               
                 
                 
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs<a class="headerlink" href="#welcome-to-mkdocs" title="Permanent link">&para;</a></h1>
-<p>For full documentation visit <a href="https://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
+                <h1 id="welcome-to-openkuka">Welcome to OpenKuka<a class="headerlink" href="#welcome-to-openkuka" title="Permanent link">&para;</a></h1>
+<p>This website is a <strong>community</strong> effort to offers <strong>meaningful documentation</strong> for KUKA robots.</p>
+<p><em>While KUKA robots are powerful, the docs they provide to their customers is generally crappy and opaque.</em></p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>For now have a taste by looking at the language ref section :</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
+<li><a href="http://127.0.0.1:8000/krl-ref/System/">System.Variables</a></li>
+<li><a href="http://127.0.0.1:8000/krl-ref/System.Message/">System.Messages</a></li>
 </ul>
-<h2 id="project-layout">Project layout<a class="headerlink" href="#project-layout" title="Permanent link">&para;</a></h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</pre></div>
-</td></tr></table>
+<h2 id="collaborate">Collaborate<a class="headerlink" href="#collaborate" title="Permanent link">&para;</a></h2>
+<p>Comments, suggestions and contributions are really welcome. Please feel free to open <a href="https://github.com/OpenKuka/Website/issues">issues</a> on the <a href="https://github.com/OpenKuka/Website">github repo</a> if you whish to collaborate.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Language Reference doc is based on set of simple <a href="https://github.com/OpenKuka/Website/tree/master/docs/krl-ref/ref"><code>YAML</code> files</a> describing <code>types</code>, <code>variables</code> and <code>functions</code>.
+The data is passed to the site generator through a <a href="https://github.com/OpenKuka/Website/blob/master/main.py">small python script</a> and shaped thanks to <a href="https://github.com/OpenKuka/Website/tree/master/theme">jinja2 templates</a>.</p>
+<p>Anyone should be able to write/enrich the <code>YAML</code> files describing the KRL language. Documentation on this topic coming soon ...</p>
+</div>
                 
                   
                 
@@ -413,13 +399,13 @@ docs/
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="crosscomm/" title="CrossComm" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="krl-ref/System/" title="System" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                CrossComm
+                System
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
