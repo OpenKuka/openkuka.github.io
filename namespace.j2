@@ -1,12 +1,11 @@
 {% set fences = 'true' %}
 
 {# MACROS #}
-{% import 'macros_common.j2' as common %}
-{% import 'macros_enum.j2' as macros_enum %}
-{% import 'macros_struc.j2' as macros_struc %}
-{% import 'macros_variables.j2' as macros_var %}
-{% import 'macros_function.j2' as macros_func %}
-
+{% import 'macros_common.j2' as common with context %}
+{% import 'macros_enum.j2' as macros_enum with context%}
+{% import 'macros_struc.j2' as macros_struc with context%}
+{% import 'macros_variables.j2' as macros_var with context%}
+{% import 'macros_function.j2' as macros_func with context%}
 
 {% set ns = allnamespaces[namespace_filter] %}
 {% set ns_desc = ns['description'] %}
@@ -15,25 +14,25 @@
 {% set ns_variables =  ns['variables'] %}
 {% set ns_functions = ns['functions'] %}
 
-<h1 class="tippy" data-tippy-content="Another Tooltip" >{{ namespace_filter }}</h1>
 
+<h1 class="tippy" data-tippy-content="Another Tooltip" >{{ namespace_filter }}</h1>
 
 {{ ns_desc | string | markdown }}
 
 {# ENUMS #}
-{% if ns_enums != none %}
+{% if ns_enums is defined and ns_enums != none%}
 ## **Enum Types**
 {{ common.bighr() }}
 
 {% for enum in ns_enums | sort(attribute='name') %}
-{{ macros_enum.show_type(enum)|indent(0, true) }}
+{{ macros_enum.show_type(enum, xref)|indent(0, true) }}
 {{ common.smallhr() if not loop.last }}
 {% endfor %}
 {% endif %}
 
 
 {# STRUCS #}
-{% if ns_strucs != none %}
+{% if ns_strucs is defined and ns_strucs != none%}
 ## **Struc Types**
 {{ common.bighr() }}
 
@@ -45,7 +44,7 @@
 
 
 {# VARIABLES #}
-{% if ns['variables'] != none %}
+{% if ns_variables is defined and ns_variables != none%}
 ## **Variables**
 {{ common.bighr() }}
 
@@ -76,7 +75,7 @@
 
 
 {# FUNCTIONS #}
-{% if ns_functions != none %}
+{% if ns_functions is defined and ns_functions != none%}
 ## **Functions**
 {{ common.bighr() }}
 

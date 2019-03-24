@@ -64,3 +64,12 @@
 {# <hr style ="width: 0.5em; margin:auto; border-bottom: .1rem solid #ff7043;" > #}
 {% endmacro %}
 
+
+{% macro show_node_title(node_name) %}
+{# <span markdown='1' class="tippy" data-tippy-content="Edit on Github" title="Edit on Github"> #}
+
+<h3 id="adap_acc"> {{ node_name }}</h3>
+
+
+{# </span> #}
+{% endmacro %}

@@ -1,12 +1,13 @@
-{% import 'macros_common.j2' as common %}
+{% import 'macros_common.j2' as common with context%}
 
 {# show_type #}
-{% macro show_type(enum, fence='false') %}
+{% macro show_type(enum, xref) %}
 {% set name = enum.name %}
 {% set description = enum.description %}
 {% set dtype = enum['data-type'] %}
 {% set values = enum['values'] %}
 
+{{ common.show_node_title(name) }}
 ### **{{ name }}**
 *{{ description }}*
 

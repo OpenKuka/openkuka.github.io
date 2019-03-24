@@ -37,10 +37,18 @@
     </thead>
     <tbody>
         {% for field in fields %}
+            
         {% set dtype = field['data-type'] %}
+        {% if dtype|upper == 'STRUCT' or dtype|upper == 'ENUM' %}
+            {% set typename = field['type'] %}
+        {% else %}
+            {% set typename = field['data-type'] %}
+        {% endif %}
+        
+        {% set type = field['type'] %}
         <tr>
             <td><code>{{ field.name }}</code></td>
-            <td><code>{{ common.get_typelink(dtype, alltypes) }}</code></td>
+            <td><code>{{ common.get_typelink(typename, alltypes) }}</code></td>
             <td>{{ (field.description or '') | markdown }}</td>
         </tr>
         {% endfor %}
@@ -93,9 +101,14 @@
     <tbody>
         {% for field in fields %}
         {% set dtype = field['data-type'] %}
+        {% if dtype|upper == 'STRUCT' or dtype|upper == 'ENUM' %}
+            {% set typename = field['type'] %}
+        {% else %}
+            {% set typename = field['data-type'] %}
+        {% endif %}
         <tr>
             <td><code>{{ field.name }}</code></td>
-            <td><code>{{ dtype }}</code></td>
+            <td><code>{{ common.get_typelink(typename, alltypes) }}</code></td>
             <td>{{ (field.unit or '') | markdown }}</td>
             <td>{{ (field.constraint or '') | markdown }}</td>
             <td>{{ (field.description or '') | markdown }}</td>

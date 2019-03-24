@@ -1,268 +1,3 @@
-enums:
-  - name: ADAP_ACC
-    data-type: ENUM
-    description: Acceleration adaptation modes
-    values:
-      - name: NONE
-        description: Acceleration adaptation not activated
-      - name: STEP1
-        description: Dynamic model without kinetic energy
-      - name: STEP2
-        description: Dynamic model with kinetic energy
-  - name: PRO_MODE
-    data-type: ENUM
-    description: Program run modes
-    values:
-    - name: ISTEP
-      description: 'Incremental Step : block-by-block processing with a stop after each instruction (without `ADVANCE` run processing).'
-    - name: PSTEP
-      description: 'Program Step: complete processing of subprograms (without `ADVANCE` run processing).'
-    - name: MSTEP
-      description: 'Motion Step: step-by-step processing with a stop after each motion instruction (without `ADVANCE` run processing).'
-    - name: CSTEP
-      description: 'Continuous Step: Step-by-step processing with a stop after each motion instruction (with `ADVANCE` run processing).'
-    - name: GO
-      description: 'Continuous execution to the end of the program.'
-    - name: BSTEP
-      description: 'Back Step: Continuous execution backwards to the start of the program.'
-  - name: PRO_STATE
-    data-type: ENUM
-    description: Process states
-    values:
-      - name: P_FREE
-        description: Program not selected
-      - name: P_RESET
-        description: Program reset
-      - name: P_ACTIVE
-        description: Program active
-      - name: P_STOP
-        description: Program stopped
-      - name: P_END
-        description: End of program reached
-  - name: SW_ONOFF
-    data-type: ENUM
-    description: Generic ON/OFF switch
-    values:
-      - name: 'ON'
-        description: Switched `ON`
-      - name: 'OFF'
-        description: Switched `OFF`
-
-strucs:
-  - name: AXIS
-    data-type: STRUC
-    description: "Robot axis `A1..A6` data structure."
-    fields:
-      - name: A1
-        data-type: REAL
-      - name: A2
-        data-type: REAL
-      - name: A3
-        data-type: REAL
-      - name: A4
-        data-type: REAL
-      - name: A5
-        data-type: REAL
-      - name: A6
-        data-type: REAL
-  - name: E6AXIS
-    data-type: STRUC
-    description: Robot axis `A1..A6` and external axis `E1..E6` data structure. 
-    fields:
-      - name: A1
-        data-type: REAL
-      - name: A2
-        data-type: REAL
-      - name: A3
-        data-type: REAL
-      - name: A4
-        data-type: REAL
-      - name: A5
-        data-type: REAL
-      - name: A6
-        data-type: REAL
-      - name: E1
-        data-type: REAL
-      - name: E2
-        data-type: REAL
-      - name: E3
-        data-type: REAL
-      - name: E4
-        data-type: REAL
-      - name: E5
-        data-type: REAL
-      - name: E6
-        data-type: REAL
-  - name: FRAME
-    data-type: STRUC
-    description: Frame data structure. 
-    fields:
-      - name: X
-        data-type: REAL
-      - name: Y
-        data-type: REAL
-      - name: Z
-        data-type: REAL
-      - name: A
-        data-type: REAL
-      - name: B
-        data-type: REAL
-      - name: C
-        data-type: REAL
-  - name: E6POS
-    data-type: STRUC
-    description: Position data structure. 
-    fields:
-      - name: X
-        data-type: REAL
-      - name: Y
-        data-type: REAL
-      - name: Z
-        data-type: REAL
-      - name: A
-        data-type: REAL
-      - name: B
-        data-type: REAL
-      - name: C
-        data-type: REAL
-      - name: E1
-        data-type: REAL
-      - name: E2
-        data-type: REAL
-      - name: E3
-        data-type: REAL
-      - name: E4
-        data-type: REAL
-      - name: E5
-        data-type: REAL
-      - name: E6
-        data-type: REAL
-      - name: S
-        data-type: INT
-        description: Status
-      - name: T
-        data-type: INT
-        description: Turn
-  - name: POS
-    data-type: STRUC
-    description: Position data structure. 
-    fields:
-      - name: X
-        data-type: REAL
-      - name: Y
-        data-type: REAL
-      - name: Z
-        data-type: REAL
-      - name: A
-        data-type: REAL
-      - name: B
-        data-type: REAL
-      - name: C
-        data-type: REAL
-      - name: S
-        data-type: INT
-        description: Status
-      - name: T
-        data-type: INT
-        description: Turn
-  - name: SIGINF
-    data-type: STRUC
-    description: Signal info data structure. 
-    fields:
-      - name: Typ
-        data-type: ENUM
-        description: |
-          * `#IN` : signal is declared for inputs
-          * `#OUT` : signal is declared for outputs
-          * `#INV` : signal is not declared
-          * `#IN0` : reserved for future use
-          * `#OUT0` : signal for system outputs set to `false`
-      - name: DTyp
-        data-type: ENUM
-        description: |
-          * `#SYSI` : system signal of data type `INT` (whole number)
-          * `#SYSB` : system signal of data type `BOOL` (logic state)
-          * `#USRI` : user-defined global signal of data type `INT`
-          * `#USRB` : user-defined global signal of data type `BOOL`
-      - name: Idx
-        data-type: INT
-        constraint: '[0,4096]'
-        description: Signal number. `O` for invalid signal or signal set to `false`.
-      - name: Len
-        data-type: INT
-        constraint: '[0,32]'
-        description: Signal length. `1` for signal of type `BOOL`. `0` for invalid signal.
-  - name: SIGNAL
-    data-type: STRUC
-    description: A signal defines and alias to one or several IN/OUT
-    comments: |
-      A `SIGNAL` links predefined signal variables for inputs or outputs with a name.
-      Such a link, i.e. a `SIGNAL` declaration, is required in order to be able to address an analog input or output. 
-      An input or output may appear in several SIGNAL declarations.
-  - name: ACC_CAR
-    data-type: STRUC
-    description: Frame data structure with an additional magnitude field. 
-    fields:
-      - name: X
-        data-type: REAL
-        description: X component
-      - name: Y
-        data-type: REAL
-        description: X component
-      - name: Z
-        data-type: REAL
-        description: X component
-      - name: ABS
-        data-type: REAL
-        description: Magnitude ||X^2^ + Y^2^ + Z^2^||
-      - name: A
-        data-type: REAL
-        description: A component
-      - name: B
-        data-type: REAL
-        description: B component
-      - name: C
-        data-type: REAL
-        description: C component
-  - name: CP
-    data-type: STRUC
-    description: Speed/Acceleration data structure
-    fields:
-    - name: CP
-      data-type: REAL
-      description: linear component
-    - name: ORI1
-      data-type: REAL
-      description: Swivel component
-    - name: ORI2
-      data-type: REAL
-      description: Rotational component
-  - name: PRO_IP
-    data-type: STRUC
-    description: Process pointer data structure 
-    fields:
-    - name: I_EXECUTED
-      data-type: BOOL
-      description: "`true` if the instruction is executed. `false` otherwise."
-    - name: NAME[]
-      data-type: CHAR[32]
-      description: Name of the block in the `ADVANCE` run
-    - name: NAME_C[]
-      data-type: CHAR[32]
-      description: Name of the block in the `MAIN` run
-    - name: P_ARRIVED
-      data-type: INT
-      description: Path status for the programmed point
-    - name: P_NAME[]
-      data-type: CHAR[24]
-      description: Name or aggregate of the end or auxiliary point
-    - name: SNR
-      data-type: INT
-      description: Block number in the `ADVANCE` run
-    - name: SNR_C
-      data-type: INT
-      description: Block number in the `MAIN` run
-  
 variables:
   - name: $A4PAR
     data-type: INT
@@ -529,6 +264,177 @@ variables:
       * `SIGNAL $ASYNC_AX4_P $IN[1026]`
       * `SIGNAL $ASYNC_AX5_P $IN[1026]`
       * `SIGNAL $ASYNC_AX6_P $IN[1026]`
+  - name: $ASYNC_AXIS
+    data-type: INT
+    constraint: | 
+      * Bit = `0` (synchronous mode)
+      * Bit = `1` (asynchronous mode)
+    description: Bit arrays to switch external axes to asynchronous mode
+    comments: |
+      When `$ASYNC_AXIS` is assigned in a KRL program, the newly-defined asynchronous axes are valid from this position until a new assignment is made.
+
+      When `$ASYNC_AXIS` is defined, the `ADVANCE` run will be stopped if the value of `$ASYNC_AXIS` changes. 
+      Before a new value of `$ASYNC_AXIS` is saved, the system will wait until all synchronous motions (through advance run stop) and all asynchronous motions have been completed, and all axes are in position. 
+      Thus the instruction `$ASYNC_AXIS = ...` can be used – along with the system variable `$ASYNC_STATE` – to synchronize in time synchronous and asynchronous motions.
+      `$ASYNC_AXIS` can only be modified in the KRL program, and not in the interrupt or in the `SUBMIT` interpreter.
+
+      The bits correspond to the external axes in ascending order : 
+      
+        * Bit 0 : external axis 1,
+        * Bit 1 : external axis 2,
+        * ...
+      
+      If the bit is set, the external axis will be switched to asynchronous mode; if it is reset, the external axis will be switched back to synchronous mode.
+  - name: $ASYNC_FLT
+    data-type: INT
+    unit: ms
+    constraint: '[0,16]'
+    description: Filter for asynchronous external axes
+    comments: |
+      The value of `$ASYNC_FLT` is the filter length in milliseconds for all asynchronously coordinated motions. It corresponds to the system variable `FILTER` for synchronous motions.
+  - name: $ASYNC_MODE
+    data-type: INT
+    unit: ms
+    constraint: '[0,16]'
+    description: Mode for asynchronous external axes
+    comments: |
+      In the machine data of the controller, the bit mask `$ASYNC_MODE` can be used to set various asynchronous motion execution modes.
+      
+      It is not possible to change modes while the robot controller is running. The modes can be combined in any way desired.
+      
+      Certain modes must be set in order to use special applications.
+      In the standard setting (default mode) no `$ASYNC_MODE` bits are set. 
+      Only bit `0` is used at this time :
+
+        * Bit 0 = 0 : default mode
+        * Bit 0 = 1 (1st bit) : mode 1
+        * Bit 1 = (2nd bit) : mode 2 block selection response
+  - name: $ASYNC_OPT
+    data-type: BOOL
+    description: Option flag for *asynchronous axes are possible*
+    comments: |
+      * `true` : asynchronous axes possible
+      * `false` : asynchronous axes not possible
+  - name: $ASYNC_STATE
+    data-type: ENUM
+    type: ASYNC_STATE
+    readonly: true
+    description: Current asynchronous motion execution state
+    comments: |
+      `$ASYNC_STATE` can be used to check the current asynchronous motion execution state.
+
+      Asynchronous and *normal* robot motions can be synchronized using this variable.   
+  - name: $ASYNC_T1_FAST
+    data-type: INT
+    constraint: '[0,1]'
+    description: Control of the velocity reduction factor in `Test 1` mode
+    comments: |
+      * `0` : activated
+      * `1` : deactivated
+  - name: $ASYS
+    data-type: ENUM
+    type: ASYS
+    description: Assignment of the jog keys
+  - name: $AUT
+    data-type: SIGNAL
+    description: Signal declaration `Automatic` mode
+  - name: $AUX_POWER
+    data-type: SIGNAL
+    description: Signal declaration for external power supply
+    comments: |
+      If `$AUX_POWER` has the value `true`, the external power supply is active; if the value is `false`, the external power supply is not active.
+  - name: $AXIS_ACT
+    data-type: STRUC
+    type: E6AXIS
+    description: Current axis-specific robot position
+  - name: $AXIS_ACTMOD
+    data-type: STRUC
+    type: E6AXIS
+    description: Display of axis angle modulo 180°
+  - name: $AXIS_BACK
+    data-type: STRUC
+    type: E6AXIS
+    description: Start position of the current motion block, axis-specific
+  - name: $AXIS_CAL
+    data-type: STRUC
+    type: AXIS_CAL
+    description: Display whether axis is referenced
+    comments: "`true` when axis is referenced. `false` otherwise."
+  - name: $AXIS_DIR[]
+    data-type: INT[12]
+    constraint: '{-1; 1}'
+    description: Direction of rotation for axis `A1..A6` and external axis `E1..E6`
+    comments: |
+      * `1..6` : axis `A1..A6`
+      * `7..12` : external axis `E1..E6`
+
+      `1` for positive direction. `-1` for negative direction.
+  - name: $AXIS_FOR
+    data-type: STRUC
+    type: E6AXIS
+    description: Target position of the current motion block, axis-specific
+  - name: $AXIS_HOME[]
+    data-type: STRUC
+    type: E6AXIS[5]
+    description: Definition of the various home positions
+  - name: $AXIS_INC
+    data-type: STRUC
+    type: AXIS_INC
+    unit: increment
+    description: Incremental actual values of the axes
+    comments: Indication of the axis position in increments.
+  - name: $AXIS_INT
+    data-type: STRUC
+    type: E6AXIS
+    description: Robot position at the time of an interrupt
+  - name: $AXIS_JUS
+    data-type: STRUC
+    type: AXIS_CAL
+    description: Display whether axis is mastered
+    comments: "`true` when axis is mastered. `false` otherwise."
+  - name: $AXIS_RESO[]
+    data-type: INT[12]
+    unit : increments / revolution
+    description: Resolution of the position sensing system
+    comments: |
+      Number of pulses per revolution of the encoder:
+
+        * `1..6` : axis `A1..A6`
+        * `7..12` : external axis `E1..E6`   
+  - name: $AXIS_RET
+    data-type: STRUC
+    type: E6AXIS
+    description: Axis positions when leaving the programmed path, axis-specific
+  - name: $AXIS_SEQ[]
+    data-type: INT[12]
+    description: Change in sequence of axis ... to axis ...
+    comments: |
+        * `1..6` : axis `A1..A6`
+        * `7..12` : external axis `E1..E6`
+  - name: $AXIS_TYPE[]
+    data-type: INT[12]
+    constraint: '[1,5]'
+    description: Axis type identification
+    comments: |
+      Types :
+
+        * `1` : Linear
+        * `2` : Spindle
+        * `3` : Rotational
+        * `4` : Finitely rotating
+        * `5` : Infinitely rotating
+
+      Index :
+
+        * `1..6` : axis `A1..A6`
+        * `7..12` : external axis `E1..E6`
+  - name: $AXWORKSPACE[]
+    data-type: STRUC
+    type: AXBOX[8]
+    constraint: '[1,8]'
+    description: Definition of axis-specific workspace monitoring
+
+
 
   - name: $OV_PRO
     data-type: INT
@@ -573,31 +479,3 @@ variables:
   - name: $PRO_NAME1[]
     data-type: CHAR[24]
     description: Process name of the `ROBOT` interpreter
-functions:
-  - name: StrCopy
-    description: Copy the contents of a string variable to another string variable.
-    parameters:
-      - name: strDest[]
-        pass: IN
-        type: CHAR[]
-        description: |
-          The character string is copied to this string variable.
-          Since `strDest[]` is an array of type `CHAR`, individual characters and constants are not permissible.
-      - name: strSource[]
-        pass: IN
-        type: CHAR[]
-        description:  The contents of this string variable are copied.
-    return-type: BOOL
-    return-description: Returns `true` if the copy was successfull. Returns `false` otherwise.
-    comments: |
-        The function `StrCopy()` can be used to copy the contents of a string variable to another string variable.
-    code-sample:
-      krl: |
-        DECL CHAR A[25], B[25]
-        DECL BOOL C
-        A[] = ""
-        B[] = "Example"
-        C   = StrCopy(A[], B[])
-      output: |
-        A[] = "Example" 
-        and C = true

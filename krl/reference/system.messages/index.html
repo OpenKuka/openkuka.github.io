@@ -31,7 +31,7 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
     
     
@@ -40,9 +40,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.982221ab.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.224b79ff.css">
       
       
         
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+      <script src="../../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
     
     
       
@@ -60,12 +60,37 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
     
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-136856150-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
@@ -78,6 +103,25 @@
     <svg class="md-svg">
       <defs>
         
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
@@ -94,7 +138,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="OpenKuka" class="md-header-nav__button md-logo">
+        <a href="../../.." title="OpenKuka" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -144,6 +188,28 @@
         
       </div>
       
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/OpenKuka/Website/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    OpenKuka/Website
+  </div>
+</a>
+          </div>
+        </div>
+      
     </div>
   </nav>
 </header>
@@ -164,7 +230,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Home" class="md-tabs__link">
+      <a href="../../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -176,7 +242,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../System/" title="Language Reference" class="md-tabs__link md-tabs__link--active">
+        <a href="../system.types/" title="Language Reference" class="md-tabs__link md-tabs__link--active">
           Language Reference
         </a>
       
@@ -197,13 +263,33 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="OpenKuka" class="md-nav__button md-logo">
+    <a href="../../.." title="OpenKuka" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
     </a>
     OpenKuka
   </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/OpenKuka/Website/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    OpenKuka/Website
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -213,7 +299,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
+    <a href="../../.." title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -246,8 +332,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../System/" title="System" class="md-nav__link">
-      System
+    <a href="../system.types/" title="System.Types" class="md-nav__link">
+      System.Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../system.variables/" title="System.Variable" class="md-nav__link">
+      System.Variable
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../system.functions/" title="System.Function" class="md-nav__link">
+      System.Function
     </a>
   </li>
 
@@ -604,12 +714,16 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/OpenKuka/Website/edit/master/docs/krl/reference/system.messages.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
-                <h1 class="tippy" data-tippy-content="Another Tooltip" >System.Message</h1>
+                
+                <h1 class="tippy" data-tippy-content="Another Tooltip" >System.Messages</h1>
 
 <p>Programming messages in KRL.</p>
 <h2 id="enum-types"><strong>Enum Types</strong><a class="headerlink" href="#enum-types" title="Permanent link">&para;</a></h2>
 <hr style ="border-bottom: .1rem solid #ff7043;">
+
+<h3 id="adap_acc"> EKrlMsgType</h3>
 
 <h3 id="ekrlmsgtype"><strong>EKrlMsgType</strong><a class="headerlink" href="#ekrlmsgtype" title="Permanent link">&para;</a></h3>
 <p><em>Message types</em></p>
@@ -659,6 +773,8 @@
         </tbody>
 </table>
 
+<h3 id="adap_acc"> KrlMsgParType_T</h3>
+
 <h3 id="krlmsgpartype_t"><strong>KrlMsgParType_T</strong><a class="headerlink" href="#krlmsgpartype_t" title="Permanent link">&para;</a></h3>
 <p><em>Message parameter types</em></p>
 <table>
@@ -698,6 +814,8 @@
         </tr>
         </tbody>
 </table>
+
+<h3 id="adap_acc"> MsgBufMsgType_T</h3>
 
 <h3 id="msgbufmsgtype_t"><strong>MsgBufMsgType_T</strong><a class="headerlink" href="#msgbufmsgtype_t" title="Permanent link">&para;</a></h3>
 <p><em>Message parameter types</em></p>
@@ -780,20 +898,25 @@
         </tr>
     </thead>
     <tbody>
-                        <tr>
+
+                <tr>
             <td><code>Modul[]</code></td>
             <td><code> 
                 CHAR[24]
     </code></td>
             <td>Originator displayed in the message window.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Nr</code></td>
             <td><code>            INT
     </code></td>
             <td>Message number. Message numbers may be used more than once.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Msg_Txt[]</code></td>
             <td><code> 
                 CHAR[80]
@@ -829,13 +952,16 @@
         </tr>
     </thead>
     <tbody>
-                        <tr>
+
+                <tr>
             <td><code>Sk_Type</code></td>
-            <td><code>                    <a href="../System.Message/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
+            <td><code>                    <a href="../System.Messages/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
     </code></td>
             <td>The type of the softkey.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Sk_Txt</code></td>
             <td><code> 
                 CHAR[10]
@@ -871,14 +997,17 @@
         </tr>
     </thead>
     <tbody>
-                        <tr>
+
+                <tr>
             <td><code>Vl_Stop</code></td>
             <td><code>            BOOL
     </code></td>
             <td>If <code>true</code> <code>Set_KrlMsg()</code> or <code>Set_KrlDlg()</code> trigger an <code>ADVANCE</code> run stop.
 Default to <code>true</code>.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Clear_P_Reset</code></td>
             <td><code>            BOOL
     </code></td>
@@ -887,7 +1016,9 @@ In that case, all status messages, acknowledgement messages and wait messages ge
 <p>Notification messages can only be deleted using the softkeys Ackn. and Ackn. All. 
 For dialog messages <code>Clear_P_Reset</code> si always set to <code>true</code>.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Clear_P_Saw</code></td>
             <td><code>            BOOL
     </code></td>
@@ -897,7 +1028,9 @@ Default to <code>false</code>.</p>
 <p>Notification messages can only be deleted using the softkeys Ackn. and Ackn. All. 
 For dialog messages no block selection is possible while a dialog is present on the KUKA.HMI, as all operator control elements are deactivated.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Log_To_DB</code></td>
             <td><code>            BOOL
     </code></td>
@@ -932,32 +1065,41 @@ For dialog messages no block selection is possible while a dialog is present on 
         </tr>
     </thead>
     <tbody>
-                        <tr>
+
+                <tr>
             <td><code>Par_Type</code></td>
-            <td><code>                    <a href="../System.Message/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
+            <td><code>                    <a href="../System.Messages/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
     </code></td>
             <td>Type of parameter.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Txt[]</code></td>
             <td><code> 
                 CHAR[26]
     </code></td>
             <td>Text of the parameter (or key for a message database).</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Int</code></td>
             <td><code>            INT
     </code></td>
             <td>This can be used to fill the placeholder with an integer value. It can only be used in conjunction with type=#value.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Real</code></td>
             <td><code>            REAL
     </code></td>
             <td>This can be used to fill the placeholder with a real value. It can only be used in conjunction with type=#value.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Bool</code></td>
             <td><code>            BOOL
     </code></td>
@@ -992,19 +1134,24 @@ For dialog messages no block selection is possible while a dialog is present on 
         </tr>
     </thead>
     <tbody>
-                        <tr>
+
+                <tr>
             <td><code>Type</code></td>
-            <td><code>                    <a href="../System.Message/#msgbufmsgtype_t" title="ENUM of type MsgBufMsgType_T">MsgBufMsgType_T</a>
+            <td><code>                    <a href="../System.Messages/#msgbufmsgtype_t" title="ENUM of type MsgBufMsgType_T">MsgBufMsgType_T</a>
     </code></td>
             <td>Message type.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Nr</code></td>
             <td><code>            INT
     </code></td>
             <td>Message number.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Modul[]</code></td>
             <td><code> 
                 CHAR[24]
@@ -1012,7 +1159,9 @@ For dialog messages no block selection is possible while a dialog is present on 
             <td>Represents the originator of the message.
 Only initialized for messages of type <code>#usr_...</code>, because with type <code>#sys_...</code> the parameter is usually a database key that cannot be used by the user. </td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Msg_Txt[]</code></td>
             <td><code> 
                 CHAR[80]
@@ -1020,46 +1169,60 @@ Only initialized for messages of type <code>#usr_...</code>, because with type <
             <td>Message text or message database key.
 Only initialized for messages of type <code>#usr_...</code>, because with type <code>#sys_...</code> the parameter is usually a database key that cannot be used by the user. </td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Type1</code></td>
-            <td><code>                    <a href="../System.Message/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
+            <td><code>                    <a href="../System.Messages/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
     </code></td>
             <td>Parameter type.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Txt1[]</code></td>
             <td><code> 
                 CHAR[40]
     </code></td>
             <td>Text or database key of the parameter.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Type2</code></td>
-            <td><code>                    <a href="../System.Message/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
+            <td><code>                    <a href="../System.Messages/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
     </code></td>
             <td>Parameter type.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Txt2[]</code></td>
             <td><code> 
                 CHAR[40]
     </code></td>
             <td>Text or database key of the parameter.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Type2</code></td>
-            <td><code>                    <a href="../System.Message/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
+            <td><code>                    <a href="../System.Messages/#krlmsgpartype_t" title="ENUM of type KrlMsgParType_T">KrlMsgParType_T</a>
     </code></td>
             <td>Parameter type.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Par_Txt2[]</code></td>
             <td><code> 
                 CHAR[40]
     </code></td>
             <td>Text or database key of the parameter.</td>
         </tr>
-                        <tr>
+
+
+                <tr>
             <td><code>Handle</code></td>
             <td><code>            INT
     </code></td>
@@ -1264,7 +1427,7 @@ The KRL program must therefore be polled cyclically until the message has been d
             <td><code>msgBuf[]</code></td>
             <td><code>
 
-                        <a href="../System.Message/#msgbuf_t" title="STRUC ARRAY with elements of type MsgBuf_T">MsgBuf_T</a>[100]
+                        <a href="../System.Messages/#msgbuf_t" title="STRUC ARRAY with elements of type MsgBuf_T">MsgBuf_T</a>[100]
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1319,7 +1482,7 @@ The size of the buffer is <code>100</code>.</p>
             <tr>
             <td><code>msg</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsg_t" title="STRUC of type KrlMsg_T">KrlMsg_T</a>
+                                    <a href="../System.Messages/#krlmsg_t" title="STRUC of type KrlMsg_T">KrlMsg_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1328,7 +1491,7 @@ The size of the buffer is <code>100</code>.</p>
             <tr>
             <td><code>params</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsgpar_t" title="STRUC of type KrlMsgPar_T">KrlMsgPar_T</a>
+                                    <a href="../System.Messages/#krlmsgpar_t" title="STRUC of type KrlMsgPar_T">KrlMsgPar_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1337,7 +1500,7 @@ The size of the buffer is <code>100</code>.</p>
             <tr>
             <td><code>softkey</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsgdlgsk_t" title="STRUC of type KrlMsgDlgSK_T">KrlMsgDlgSK_T</a>
+                                    <a href="../System.Messages/#krlmsgdlgsk_t" title="STRUC of type KrlMsgDlgSK_T">KrlMsgDlgSK_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1346,7 +1509,7 @@ The size of the buffer is <code>100</code>.</p>
             <tr>
             <td><code>options</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsgopt_t" title="STRUC of type KrlMsgOpt_T">KrlMsgOpt_T</a>
+                                    <a href="../System.Messages/#krlmsgopt_t" title="STRUC of type KrlMsgOpt_T">KrlMsgOpt_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1397,7 +1560,7 @@ This means that the message is transferred to the message buffer and displayed f
             <tr>
             <td><code>type</code></td>
             <td><code>
-                                    <a href="../System.Message/#ekrlmsgtype" title="ENUM of type EKrlMsgType">EKrlMsgType</a>
+                                    <a href="../System.Messages/#ekrlmsgtype" title="ENUM of type EKrlMsgType">EKrlMsgType</a>
 
             </code></td>
             <td><code>IN</code></td>
@@ -1406,7 +1569,7 @@ This means that the message is transferred to the message buffer and displayed f
             <tr>
             <td><code>msg</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsg_t" title="STRUC of type KrlMsg_T">KrlMsg_T</a>
+                                    <a href="../System.Messages/#krlmsg_t" title="STRUC of type KrlMsg_T">KrlMsg_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1415,7 +1578,7 @@ This means that the message is transferred to the message buffer and displayed f
             <tr>
             <td><code>params</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsgpar_t" title="STRUC of type KrlMsgPar_T">KrlMsgPar_T</a>
+                                    <a href="../System.Messages/#krlmsgpar_t" title="STRUC of type KrlMsgPar_T">KrlMsgPar_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1424,7 +1587,7 @@ This means that the message is transferred to the message buffer and displayed f
             <tr>
             <td><code>options</code></td>
             <td><code>
-                                    <a href="../System.Message/#krlmsgopt_t" title="STRUC of type KrlMsgOpt_T">KrlMsgOpt_T</a>
+                                    <a href="../System.Messages/#krlmsgopt_t" title="STRUC of type KrlMsgOpt_T">KrlMsgOpt_T</a>
 
             </code></td>
             <td><code>OUT</code></td>
@@ -1500,7 +1663,7 @@ No handle is required for notification messages.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../System/" title="System" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../system.functions/" title="System.Function" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1509,7 +1672,7 @@ No handle is required for notification messages.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                System
+                System.Function
               </span>
             </div>
           </a>
@@ -1529,15 +1692,22 @@ No handle is required for notification messages.</p>
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/openkuka" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../../assets/javascripts/application.d9aa80ab.js"></script>
+      <script src="../../../assets/javascripts/application.d9aa80ab.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
     
   </body>
