@@ -1559,7 +1559,7 @@ Notification messages can only be deleted via the KUKA.HMI using the softkeys Ac
 <ul>
 <li><code>-1</code> : all messages initiated by this process are deleted.</li>
 <li><code>-99</code>: all user-defined messages are deleted (for all processes: <code>ROBOT</code>, <code>SUBMIT</code> and <code>COMMAND</code> interpreters).</li>
-</ul>
+</ul></p>
 </details>
 <div><a href="https://github.com/OpenKuka/openkuka.github.io/blob/master/krl/reference/yaml/System.Messages.yml#L291-L317" title="Edit this item on Github" class="krl-edit-icon md-icon tippy"></a></div>
 
@@ -1628,7 +1628,7 @@ The KRL program must therefore be polled cyclically until the dialog has been an
 <ul>
 <li><code>1..7</code> : answer with the corresponding softkey.</li>
 <li><code>0</code> : the dialog has not been answered,but deleted (e.g. the dialog has been deleted by means of <code>Clear_KrlMsg()</code> by an interrupt or by a different process).</li>
-</ul>
+</ul></p>
 </details>
 <div><a href="https://github.com/OpenKuka/openkuka.github.io/blob/master/krl/reference/yaml/System.Messages.yml#L218-L236" title="Edit this item on Github" class="krl-edit-icon md-icon tippy"></a></div>
 
@@ -1742,7 +1742,7 @@ The size of the buffer is <code>100</code>.</p>
 <li>User-defined acknowledgement messages (#usr_quit)</li>
 <li>User-defined dialog messages (#usr_dlg)</li>
 <li>User-defined wait messages (#usr_wait)</li>
-</ul>
+</ul></p>
 </details>
 <div><a href="https://github.com/OpenKuka/openkuka.github.io/blob/master/krl/reference/yaml/System.Messages.yml#L259-L290" title="Edit this item on Github" class="krl-edit-icon md-icon tippy"></a></div>
 
@@ -1913,7 +1913,7 @@ No handle is required for notification messages.</p>
 <ul>
 <li>Notification messages are displayed in the message window by means of Set_KrlMsg(). They are not managed in the message buffer, however (“fire and forget” principle).</li>
 <li>To generate dialog messages, the function Set_KrlDlg() must be used.</li>
-</ul>
+</ul></p>
 </details>
 <!-- Very end of the body -->
 
