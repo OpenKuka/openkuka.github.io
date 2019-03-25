@@ -76,15 +76,15 @@ variables:
       - name: X
         data-type: REAL
         unit: m/s^2^
-        description: "`X` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "`X` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: Y
         data-type: REAL
         unit: m/s^2^
-        description: "`Y` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "`Y` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: Z
         data-type: REAL
         unit: m/s^2^
-        description: "`Z` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "`Z` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: ABS
         data-type: REAL
         unit: m/s^2^
@@ -99,43 +99,43 @@ variables:
       - name: X
         data-type: REAL
         unit: m/s^2^
-        description: "Maximum permissible value for the `X` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "Maximum permissible value for the `X` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: Y
         data-type: REAL
         unit: m/s^2^
-        description: "Maximum permissible value for the `Y` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "Maximum permissible value for the `Y` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: Z
         data-type: REAL
         unit: m/s^2^
-        description: "Maximum permissible value for the `Z` component of the acceleration expressed in `$ACC_CAR_TOOL` frame."
+        description: "Maximum permissible value for the `Z` component of the acceleration expressed in `<xref:$ACC_CAR_TOOL>` frame."
       - name: ABS
         data-type: REAL
         unit: m/s^2^
         constraint: \>= 0
         description: Maximum permissible value for the acceleration magnitude.
     comments: |
-        If the variable `$ACC_CAR_STOP` is set to `true`, then if the acceleration value is exceeded the robot is stopped (ramp-down braking) and an acknowledgement message is generated.
+        If the variable `<xref:$ACC_CAR_STOP>` is set to `true`, then if the acceleration value is exceeded the robot is stopped (ramp-down braking) and an acknowledgement message is generated.
       
         Note that `A`, `B` and `C` fields are not used.  
   - name: $ACC_CAR_MAX
     data-type: STRUC
     type: ACC_CAR
     readonly: true
-    description: Saves the greatest absolute values of `$ACC_CAR_ACT`
+    description: Saves the greatest absolute values of `<xref:$ACC_CAR_ACT>`
     comments: |
         This variable can be set to `0` to determine the maximum values.
   - name: $ACC_CAR_STOP
     data-type: BOOL
     readonly: true
     constraint : "`true` when stop reaction is `activated`. `false` stop reaction is `deactivated`."
-    description: Activates/Deactivates stop reaction when the value specified in `$ACC_CAR_LIMIT` is exceeded.
+    description: Activates/Deactivates stop reaction when the value specified in `<xref:$ACC_CAR_LIMIT>` is exceeded.
   - name: $ACC_CAR_TOOL
     data-type: STRUC
     type: FRAME
     readonly: true
     description: A point on the tool mounted on the robot at which the current effective acceleration is measured
     comments: |
-      In the same way as `$TOOL`, `$ACC_CAR_TOOL` is also specified relative to the flange by means of the `X`, `Y` and `Z` coordinates. 
+      In the same way as `<xref:$TOOL>`, `<xref:$ACC_CAR_TOOL>` is also specified relative to the flange by means of the `X`, `Y` and `Z` coordinates. 
       The angles of rotation `A`, `B` and `C` indicate the positions of the 3 axes of the coordinate system in which the acceleration components are then specified. 
       The individual acceleration components and the total acceleration are all evaluated cyclically.
       
@@ -205,7 +205,7 @@ variables:
     data-type: ENUM
     type: ADAP_ACC
     description: Activation of acceleration adaptation.
-    comments: "`#STEP1` and `#STEP2` require valid dynamic data (`$DYN_DAT`)."
+    comments: "`#STEP1` and `#STEP2` require valid dynamic data (`<xref:$DYN_DAT>`)."
   - name: $ADVANCE
     data-type: INT
     unit: motion blocks
@@ -271,11 +271,11 @@ variables:
       * Bit = `1` (asynchronous mode)
     description: Bit arrays to switch external axes to asynchronous mode
     comments: |
-      When `$ASYNC_AXIS` is assigned in a KRL program, the newly-defined asynchronous axes are valid from this position until a new assignment is made.
+      When `<xref:$ASYNC_AXIS>` is assigned in a KRL program, the newly-defined asynchronous axes are valid from this position until a new assignment is made.
 
       When `$ASYNC_AXIS` is defined, the `ADVANCE` run will be stopped if the value of `$ASYNC_AXIS` changes. 
       Before a new value of `$ASYNC_AXIS` is saved, the system will wait until all synchronous motions (through advance run stop) and all asynchronous motions have been completed, and all axes are in position. 
-      Thus the instruction `$ASYNC_AXIS = ...` can be used – along with the system variable `$ASYNC_STATE` – to synchronize in time synchronous and asynchronous motions.
+      Thus the instruction `$ASYNC_AXIS = ...` can be used – along with the system variable `<xref:$ASYNC_STATE>` – to synchronize in time synchronous and asynchronous motions.
       `$ASYNC_AXIS` can only be modified in the KRL program, and not in the interrupt or in the `SUBMIT` interpreter.
 
       The bits correspond to the external axes in ascending order : 
@@ -291,14 +291,14 @@ variables:
     constraint: '[0,16]'
     description: Filter for asynchronous external axes
     comments: |
-      The value of `$ASYNC_FLT` is the filter length in milliseconds for all asynchronously coordinated motions. It corresponds to the system variable `FILTER` for synchronous motions.
+      The value of `<xref:$ASYNC_FLT>` is the filter length in milliseconds for all asynchronously coordinated motions. It corresponds to the system variable `FILTER` for synchronous motions.
   - name: $ASYNC_MODE
     data-type: INT
     unit: ms
     constraint: '[0,16]'
     description: Mode for asynchronous external axes
     comments: |
-      In the machine data of the controller, the bit mask `$ASYNC_MODE` can be used to set various asynchronous motion execution modes.
+      In the machine data of the controller, the bit mask `<xref:$ASYNC_MODE>` can be used to set various asynchronous motion execution modes.
       
       It is not possible to change modes while the robot controller is running. The modes can be combined in any way desired.
       
@@ -321,7 +321,7 @@ variables:
     readonly: true
     description: Current asynchronous motion execution state
     comments: |
-      `$ASYNC_STATE` can be used to check the current asynchronous motion execution state.
+      `<xref:$ASYNC_STATE>` can be used to check the current asynchronous motion execution state.
 
       Asynchronous and *normal* robot motions can be synchronized using this variable.   
   - name: $ASYNC_T1_FAST
@@ -342,7 +342,7 @@ variables:
     data-type: SIGNAL
     description: Signal declaration for external power supply
     comments: |
-      If `$AUX_POWER` has the value `true`, the external power supply is active; if the value is `false`, the external power supply is not active.
+      If `<xref:$AUX_POWER>` has the value `true`, the external power supply is active; if the value is `false`, the external power supply is not active.
   - name: $AXIS_ACT
     data-type: STRUC
     type: E6AXIS
@@ -449,7 +449,7 @@ variables:
   - name: $PRO_MODE
     data-type: ENUM
     type: PRO_MODE
-    description: Program run mode dependent on `$INTERPRETER`
+    description: Program run mode dependent on `<xref:$INTERPRETER>`
   - name: $PRO_MODE0
     data-type: ENUM
     type: PRO_MODE
@@ -461,7 +461,7 @@ variables:
   - name: $PRO_STATE
     data-type: ENUM
     type: PRO_STATE
-    description: Process state dependent on `$INTERPRETER`
+    description: Process state dependent on `<xref:$INTERPRETER>`
   - name: $PRO_STATE0
     data-type: ENUM
     type: PRO_STATE
@@ -472,7 +472,7 @@ variables:
     description: Process state of the `ROBOT` interpreter
   - name: $PRO_NAME[]
     data-type: CHAR[24]
-    description: Process name dependent on `$INTERPRETER`
+    description: Process name dependent on `<xref:$INTERPRETER>`
   - name: $PRO_NAME0[]
     data-type: CHAR[24]
     description: Process name of the `SUBMIT` interpreter
