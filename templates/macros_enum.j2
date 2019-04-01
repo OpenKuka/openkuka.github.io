@@ -37,7 +37,7 @@
         {% set dtype = value['data-type'] %}
         <tr>
             <td><code>#{{ value.name }}</code></td>
-            <td>{{ value.description | markdown }}</td>
+            <td>{{ value.description or '' | markdown }}</td>
         </tr>
     {% endfor %}
     </tbody>
@@ -79,8 +79,10 @@
 {% endmacro %}
 
 {% macro show_enumlist(type) %}
-    {% set node = xref[type]['value'] %}
-    {%- for value in node['values'] -%}
-        <span class="tippy" data-tippy-content="{{ value['description'] | markdown }}" title="#{{ value['name'] | upper }} : {{ value['description'] }}"><code>#{{ value['name'] | upper }}</code></span>{{ ' ,'  if not loop.last }}
-    {%- endfor -%}
+    {% if type in xref %}
+        {% set node = xref[type]['value'] %}
+        {%- for value in node['values'] -%}
+            <span class="tippy" data-tippy-content="{{ value['description'] or '' | markdown }}" title="#{{ value['name'] | upper }} : {{ value['description'] }}"><code>#{{ value['name'] | upper }}</code></span>{{ ' ,'  if not loop.last }}
+        {%- endfor -%}
+    {% endif %}
 {% endmacro %}

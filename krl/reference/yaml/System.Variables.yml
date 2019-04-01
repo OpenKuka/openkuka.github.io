@@ -1,4 +1,5 @@
 variables:
+# A
   - name: $A4PAR
     data-type: INT
     constraint : "`0` when unset. `1` when set"
@@ -433,7 +434,7 @@ variables:
     type: AXBOX[8]
     constraint: '[1,8]'
     description: Definition of axis-specific workspace monitoring
-
+# B
   - name: $BASE
     data-type: STRUC
     type: FRAME
@@ -498,8 +499,7 @@ variables:
     data-type: STRUC
     type: BUS
     description: L2 bus interface (KRC32)
-
-
+# C
   - name: $CABLE2_MON
     data-type: BOOL
     description: Additional motor cable monitoring
@@ -649,7 +649,221 @@ variables:
       There are 32 cyclical flags available.
       These flags are cyclically updated independently of program execution. 
       The default value is `false`.
-  
+# D
+  - name: $DATA_SERx
+    data-type: INT
+    description: Number of serial receive messages read in the channel x buffer
+  - name: $DATA_INTEGRITY
+    data-type: BOOL
+    description: A variable of type `SIGNAL` is output either as groups of bits or one bit at a time
+    comments: |
+      If the signal variable is output as groups of bits, the signal must be defined in one of the defined data objects `OUTB`, `OUTW` or `OUTDW`.
+
+      * `true` : data are output as groups of bits
+      * `false` : data are output one bit at a time
+  - name: $DATAPATH[]
+    data-type: CHAR[16]
+    description: Name of the `SRC` file whose variables in the data list are to be accessed using the variable modification function
+  - name: $DATE
+    data-type: STRUC
+    type: DATE
+    description: System time and system date
+  - name: $DECEL_MB
+    data-type: REAL
+    unit: ms
+    description: Deceleration time during maximum braking
+    comments: |
+      Braking ramp for dynamic braking. 
+      In maximum braking, the current actual speed value is taken as the command speed value and run down the ramp set in the machine datum `$DECEL_MB` to zero.
+  - name: $DEF_A4FIX
+    data-type: BOOL
+    description: Fixing of axis 4 when palletizing
+    comments: |
+      Defines whether the robot has 5 or 6 axes.
+      When a program is loaded or reset, `$PAL_MODE = $DEF_A4FIX` is set, i.e. palletizing mode is thus automatically activated for a 5-axis robot and not for a normal 6-axis robot.
+
+      * `true` : 5-axis robot (axis 4 fixed)
+      * `false` : 6-axis robot
+  - name: $DEF_FLT_CP
+    data-type: INT
+    description: Default filter for CP motion
+  - name: $DEF_FLT_PTP
+    data-type: INT
+    description: Default filter for PTP motion
+  - name: $DEF_L_CM
+    data-type: STRUC
+    type: FRAME
+    description: Center of mass frame for the default load on the flange in the flange coordinate system
+    fields:
+      - name: 'X'
+        data-type: REAL
+        description: Offset in the `X` direction
+      - name: 'Y'
+        data-type: REAL
+        description: Offset in the `Y` direction
+      - name: 'Z'
+        data-type: REAL
+        description: Offset in the `Z` direction
+      - name: 'A'
+        data-type: REAL
+        description: Rotation about the `Z` axis
+      - name: 'B'
+        data-type: REAL
+        description: Rotation about the `Y` axis
+      - name: 'C'
+        data-type: REAL
+        description: Rotation about the `X` axis
+  - name: $DEF_L_J
+    data-type: STRUC
+    type: INERTIA
+    description: Default moment of inertia of the load on the flange in the default center of mass coordinate system of the load
+  - name: $DEF_L_M
+    data-type: REAL
+    unit: kg ?
+    description: Default mass of the load on the flange
+  - name: $DEF_LA3_CM
+    data-type: STRUC
+    type: FRAME
+    description: Center of mass frame for the default mass of the supplementary load on axis 3 in the flange coordinate system
+    fields:
+      - name: 'X'
+        data-type: REAL
+        description: Offset in the `X` direction
+      - name: 'Y'
+        data-type: REAL
+        description: Offset in the `Y` direction
+      - name: 'Z'
+        data-type: REAL
+        description: Offset in the `Z` direction
+      - name: 'A'
+        data-type: REAL
+        description: Rotation about the `Z` axis
+      - name: 'B'
+        data-type: REAL
+        description: Rotation about the `Y` axis
+      - name: 'C'
+        data-type: REAL
+        description: Rotation about the `X` axis
+  - name: $DEF_LA3_J
+    data-type: STRUC
+    type: INERTIA
+    description: DDefault moment of inertia of the supplementary load on axis 3
+  - name: $DEF_LA3_M
+    data-type: REAL
+    unit: kg ?
+    description: Default mass of the supplementary load on axis 3
+  - name: $DEF_OV_JOG
+    data-type: INT
+    description: Default value for override in jog mode
+  - name: $DEVICE
+    data-type: ENUM
+    type: DEVICE
+    description: Operator control device status
+  - name: $DH_4
+    data-type: STRUC
+    type: DHART
+    fields:
+      - name: DHART_A
+        data-type: REAL
+        unit: mm 
+      - name: DHART_D
+        data-type: REAL
+        unit: mm  
+      - name: DHART_ALPHA
+        data-type: REAL
+        unit: '°'  
+    description: Denavit-Hartenberg parameters for the wrist (frame between `A4` and `A5`)
+    comments: |
+      ![Denavit-Hartenberg transformation](../img/denavit_hartenberg_transformation.png)
+  - name: $DH_5
+    data-type: STRUC
+    type: DHART
+    fields:
+      - name: DHART_A
+        data-type: REAL
+        unit: mm 
+      - name: DHART_D
+        data-type: REAL
+        unit: mm  
+      - name: DHART_ALPHA
+        data-type: REAL
+        unit: '°'  
+    description: Denavit-Hartenberg parameters for the wrist (frame between `A5` and `A6`)
+    comments: |
+      ![Denavit-Hartenberg transformation](../img/denavit_hartenberg_transformation.png)
+  - name: $DIGINi
+    data-type: SIGNAL
+    description: Assignment of digital inputs 1 to 6
+    comments: |
+      * `SIGNAL $DIGIN1 $IN[1026] TO $IN[1026]`
+      * `SIGNAL $DIGIN2 $IN[1026] TO $IN[1026]`
+      * `SIGNAL $DIGIN3 $IN[1026] TO $IN[1026]`
+      * `SIGNAL $DIGIN4 $IN[1026] TO $IN[1026]`
+      * `SIGNAL $DIGIN5 $IN[1026] TO $IN[1026]`
+      * `SIGNAL $DIGIN6 $IN[1026] TO $IN[1026]`
+  - name: $DIGINiCODE
+    data-type: ENUM
+    type: DIGINCODE
+    description: Defines whether or not the value for `$DIGINi` is preceded by a sign
+    comments: |
+      * `#SIGNED` : with sign
+      * `#UNSIGNED` : without sign
+  - name: $DIR_CAL
+    data-type: INT
+    unit: bit array
+    constraint: "'Bbbbbbbbbbbbb'"
+    description: Defines the referencing direction for each axis `A1..A6` and external axis `E1..E6`
+    comments: |
+      * `Bit[n] = 0` : reference point of axis n is approached in the positive direction
+      * `Bit[n] = 1` : reference point of axis n is approached in the negative direction
+  - name: $DIS_WRP1
+    data-type: REAL
+    description: Average distance of wrist point from singularity 1 (Alpha 1 singularity)
+  - name: $DIS_WRP2
+    data-type: REAL
+    description: Average distance of wrist point from singularity 2 (Alpha 5 singularity)
+  - name: $DISPLAY_REF
+    data-type: BOOL
+    description: New form output when `<xref:$DISPLAY_VAR>` is changed
+  - name: $DISPLAY_VAR[]
+    data-type: STRUC
+    type: DISPLAY_VAR[32]
+    description: Observable variables
+  - name: $DIST_NEXT
+    data-type: REAL
+    description: Distance still to be covered to the next point
+  - name: $DISTANCE
+    data-type: REAL
+    unit: mm
+    description: Curve length, CP motion
+  - name: $DRIVE_CART
+    data-type: BOOL
+    description: 'Option bit: PTP points with Cartesian coordinates'
+    comments: |
+      * `true` : PTP points can have cartesian coordinates
+      * `false : PTP points cannot have cartesian coordinates
+  - name: $DRIVE_CP
+    data-type: BOOL
+    description: 'Option bit: Cartesian robot motion possible (LIN, CIRC)'
+    comments: |
+      * `true` : cartesian robot motion possible
+      * `false : cartesian robot motion not possible
+  - name: $DRIVES_OFF
+    data-type: SIGNAL
+    description: Signal declaration `Drives OFF`
+  - name: $DRIVES_ON
+    data-type: SIGNAL
+    description: Signal declaration `Drives ON`
+  - name: $DSECHANNEL
+    data-type: INT
+    description: Assignment of axes to channels of the digital servoelectronics (DSE)
+  - name: $DYN_DAT[]
+    data-type: REAL[350]
+    description: Model data of the robot for acceleration adaptation, higher motion profile and kinetic energy
+    comments: |
+      Contains the model data of the robot, which are required for acceleration adaptation, the higher motion profile and the calculation of kinetic energy (moments of inertia, friction values, etc.)
+
+# O
   - name: $OV_PRO
     data-type: INT
     constraint: '[0, 100]'
@@ -660,6 +874,7 @@ variables:
 
       The program override is specified as a percentage of the programmed velocity.
       In T1 mode, the maximum velocity is 250 mm/s, irrespective of the value that is set.
+# P
   - name: $PRO_MODE
     data-type: ENUM
     type: PRO_MODE

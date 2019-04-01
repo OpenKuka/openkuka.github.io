@@ -1,4 +1,5 @@
 enums:
+# A
   - name: ADAP_ACC
     data-type: ENUM
     description: Acceleration adaptation modes
@@ -45,7 +46,8 @@ enums:
         description: The output is set and the robot stopped if the TCP is located inside the work envelope
       - name: OUTSIDE_STOP
         description: The output is set and the robot stopped if the TCP is located outside the work envelope
- 
+ # B
+ # C
   - name: CIRC_TYPE
     data-type: ENUM
     description: Orientation control modes for CIRC blocks
@@ -72,9 +74,29 @@ enums:
         description: Reduction in jog mode SStep(T1)
       - name: VAR_ALL
         description: Reduction in all modes
- 
+# D
+  - name: DEVICE
+    data-type: ENUM
+    description: Device status
+    values:
+      - name: ACTIVE
+      - name: BLOCK
+      - name: PASSIVE
+      - name: 'OFF'
+  - name: DIGINCODE
+    data-type: ENUM
+    description: Wether a digital input is signed or not
+    values:
+      - name: SIGNED
+      - name: UNSIGNED
+  - name: DIRECTION
+    data-type: ENUM
+    description: Direction status 
+    values:
+      - name: FORWARD
+      - name: BACKWARD
 
-
+# P
   - name: PRO_MODE
     data-type: ENUM
     description: Program run modes
@@ -105,6 +127,7 @@ enums:
         description: Program stopped
       - name: P_END
         description: End of program reached
+# S
   - name: SW_ONOFF
     data-type: ENUM
     description: Generic ON/OFF switch
@@ -115,7 +138,48 @@ enums:
         description: Switched `OFF`
 
 strucs:
-
+#  A
+  - name: ACC_CAR
+    data-type: STRUC
+    description: Frame data structure with an additional magnitude field. 
+    fields:
+      - name: X
+        data-type: REAL
+        description: X component
+      - name: Y
+        data-type: REAL
+        description: X component
+      - name: Z
+        data-type: REAL
+        description: X component
+      - name: ABS
+        data-type: REAL
+        description: Magnitude ||X^2^ + Y^2^ + Z^2^||
+      - name: A
+        data-type: REAL
+        description: A component
+      - name: B
+        data-type: REAL
+        description: B component
+      - name: C
+        data-type: REAL
+        description: C component
+  - name: AXIS
+    data-type: STRUC
+    description: "Robot axis `A1..A6` data structure."
+    fields:
+      - name: A1
+        data-type: REAL
+      - name: A2
+        data-type: REAL
+      - name: A3
+        data-type: REAL
+      - name: A4
+        data-type: REAL
+      - name: A5
+        data-type: REAL
+      - name: A6
+        data-type: REAL
   - name: AXBOX
     data-type: STRUC
     description: Axis-specific state data structure
@@ -198,23 +262,7 @@ strucs:
       - name: E6
         data-type: INT
         constraint: '>= 0'
-  - name: AXIS
-    data-type: STRUC
-    description: "Robot axis `A1..A6` data structure."
-    fields:
-      - name: A1
-        data-type: REAL
-      - name: A2
-        data-type: REAL
-      - name: A3
-        data-type: REAL
-      - name: A4
-        data-type: REAL
-      - name: A5
-        data-type: REAL
-      - name: A6
-        data-type: REAL
-  
+# B
   - name: BUS
     data-type: STRUC
     description: L2 bus interface data structure.
@@ -247,7 +295,70 @@ strucs:
         data-type: INT
       - name: DFLT_SAP
         data-type: INT
+# C
+  - name: CP
+    data-type: STRUC
+    description: Speed/Acceleration data structure
+    fields:
+    - name: CP
+      data-type: REAL
+      description: linear component
+    - name: ORI1
+      data-type: REAL
+      description: Swivel component
+    - name: ORI2
+      data-type: REAL
+      description: Rotational component
 
+# D
+  - name: DATE
+    data-type: STRUC
+    description: Date data structure. 
+    fields:
+      - name: CSEC
+        data-type: INT
+      - name: SEC
+        data-type: INT
+      - name: MIN
+        data-type: INT
+      - name: HOUR
+        data-type: INT
+      - name: DAY
+        data-type: INT
+      - name: MONTH
+        data-type: INT
+      - name: YEAR
+        data-type: INT
+  - name: DHART
+    data-type: STRUC
+    description: Denavit-Hartenberg parmaeters data structure. 
+    fields:
+      - name: DHART_A
+        data-type: REAL
+        description: length `a`
+      - name: DHART_D
+        data-type: REAL
+        description: length `b`
+      - name: DHART_ALPHA
+        data-type: REAL
+        description: angle `α`
+  - name: DISPLAY_VAR
+    data-type: STRUC
+    description: Observable variable data structure. 
+    fields:
+      - name: Name
+        data-type: CHAR[32]
+        description: Name of the observable variable
+      - name: Path
+        data-type: CHAR[12]
+        description: Corresponding file list name
+      - name: Titla
+        data-type: CHAR[12]
+        description: Name to be displayed for the variable
+
+
+
+# E
   - name: E6AXIS
     data-type: STRUC
     description: Robot axis `A1..A6` and external axis `E1..E6` data structure. 
@@ -275,35 +386,6 @@ strucs:
       - name: E5
         data-type: REAL
       - name: E6
-        data-type: REAL
-  
-
-  - name: FRA
-    data-type: STRUC
-    description: Fraction data structure. 
-    fields:
-      - name: N
-        data-type: INT
-        description: numerator
-      - name: D
-        data-type: INT
-        description: denominator
-  
-  - name: FRAME
-    data-type: STRUC
-    description: Frame data structure. 
-    fields:
-      - name: X
-        data-type: REAL
-      - name: Y
-        data-type: REAL
-      - name: Z
-        data-type: REAL
-      - name: A
-        data-type: REAL
-      - name: B
-        data-type: REAL
-      - name: C
         data-type: REAL
   - name: E6POS
     data-type: STRUC
@@ -339,6 +421,70 @@ strucs:
       - name: T
         data-type: INT
         description: Turn
+# F 
+  - name: FRA
+    data-type: STRUC
+    description: Fraction data structure. 
+    fields:
+      - name: N
+        data-type: INT
+        description: numerator
+      - name: D
+        data-type: INT
+        description: denominator  
+  - name: FRAME
+    data-type: STRUC
+    description: Frame data structure. 
+    fields:
+      - name: X
+        data-type: REAL
+      - name: Y
+        data-type: REAL
+      - name: Z
+        data-type: REAL
+      - name: A
+        data-type: REAL
+      - name: B
+        data-type: REAL
+      - name: C
+        data-type: REAL
+# I
+  - name: INERTIA
+    data-type: STRUC
+    description: Inertia data structure. 
+    fields:
+      - name: X
+        data-type: REAL
+      - name: Y
+        data-type: REAL
+      - name: Z
+        data-type: REAL
+# P
+  - name: PRO_IP
+    data-type: STRUC
+    description: Process pointer data structure 
+    fields:
+    - name: I_EXECUTED
+      data-type: BOOL
+      description: "`true` if the instruction is executed. `false` otherwise."
+    - name: NAME[]
+      data-type: CHAR[32]
+      description: Name of the block in the `ADVANCE` run
+    - name: NAME_C[]
+      data-type: CHAR[32]
+      description: Name of the block in the `MAIN` run
+    - name: P_ARRIVED
+      data-type: INT
+      description: Path status for the programmed point
+    - name: P_NAME[]
+      data-type: CHAR[24]
+      description: Name or aggregate of the end or auxiliary point
+    - name: SNR
+      data-type: INT
+      description: Block number in the `ADVANCE` run
+    - name: SNR_C
+      data-type: INT
+      description: Block number in the `MAIN` run
   - name: POS
     data-type: STRUC
     description: Position data structure. 
@@ -361,6 +507,8 @@ strucs:
       - name: T
         data-type: INT
         description: Turn
+
+# S
   - name: SIGINF
     data-type: STRUC
     description: Signal info data structure. 
@@ -395,66 +543,3 @@ strucs:
       A `SIGNAL` links predefined signal variables for inputs or outputs with a name.
       Such a link, i.e. a `SIGNAL` declaration, is required in order to be able to address an analog input or output. 
       An input or output may appear in several SIGNAL declarations.
-  - name: ACC_CAR
-    data-type: STRUC
-    description: Frame data structure with an additional magnitude field. 
-    fields:
-      - name: X
-        data-type: REAL
-        description: X component
-      - name: Y
-        data-type: REAL
-        description: X component
-      - name: Z
-        data-type: REAL
-        description: X component
-      - name: ABS
-        data-type: REAL
-        description: Magnitude ||X^2^ + Y^2^ + Z^2^||
-      - name: A
-        data-type: REAL
-        description: A component
-      - name: B
-        data-type: REAL
-        description: B component
-      - name: C
-        data-type: REAL
-        description: C component
-  - name: CP
-    data-type: STRUC
-    description: Speed/Acceleration data structure
-    fields:
-    - name: CP
-      data-type: REAL
-      description: linear component
-    - name: ORI1
-      data-type: REAL
-      description: Swivel component
-    - name: ORI2
-      data-type: REAL
-      description: Rotational component
-  - name: PRO_IP
-    data-type: STRUC
-    description: Process pointer data structure 
-    fields:
-    - name: I_EXECUTED
-      data-type: BOOL
-      description: "`true` if the instruction is executed. `false` otherwise."
-    - name: NAME[]
-      data-type: CHAR[32]
-      description: Name of the block in the `ADVANCE` run
-    - name: NAME_C[]
-      data-type: CHAR[32]
-      description: Name of the block in the `MAIN` run
-    - name: P_ARRIVED
-      data-type: INT
-      description: Path status for the programmed point
-    - name: P_NAME[]
-      data-type: CHAR[24]
-      description: Name or aggregate of the end or auxiliary point
-    - name: SNR
-      data-type: INT
-      description: Block number in the `ADVANCE` run
-    - name: SNR_C
-      data-type: INT
-      description: Block number in the `MAIN` run
