@@ -26,3 +26,27 @@ functions:
       output: |
         A[] = "Example" 
         and C = true
+
+  - name: StrClear
+    description: Delete the content of a string variable.
+    parameters:
+      - name: strVar[]
+        pass: IN
+        type: CHAR[]
+        description: |
+         Variable, whose content should be deleted
+      
+    return-type: BOOL
+    return-description: Return value is always TRUE.
+    comments: |
+        The function `StrClear()` can be used to delete the content of a string variable.
+    code-sample:
+      krl: |
+        DECL CHAR string[25]
+        DECL BOOL ret
+        
+        string[] = "KUKAROBOTS"
+        ret   = StrClear(string[])
+      output: |
+        string[] = "" 
+        and C = true
