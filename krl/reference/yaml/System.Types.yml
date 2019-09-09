@@ -148,10 +148,10 @@ strucs:
         description: X component
       - name: Y
         data-type: REAL
-        description: X component
+        description: Y component
       - name: Z
         data-type: REAL
-        description: X component
+        description: Z component
       - name: ABS
         data-type: REAL
         description: Magnitude ||X^2^ + Y^2^ + Z^2^||
